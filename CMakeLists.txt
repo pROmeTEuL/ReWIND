@@ -24,7 +24,7 @@ qt_add_qml_module(appUniversityScheduler
     QML_FILES
         Main.qml
         QML_FILES
-        QML_FILES NewItemPage.qml
+        QML_FILES EditItemPage.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

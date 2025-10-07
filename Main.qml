@@ -46,7 +46,7 @@ ApplicationWindow {
                 RoundButton {
                     text: "+"
                     onClicked: {
-                        stackView.push("NewItemPage.qml")
+                        stackView.push("EditItemPage.qml")
                         drawer.close()
                     }
                 }
