@@ -7,10 +7,22 @@ ApplicationWindow {
     height: 480
     visible: true
     title: qsTr("Hello World")
-
-    RoundButton {
-        text: "Open Menu"
-        onClicked: drawer.open()
+    ColumnLayout {
+        anchors.fill: parent
+        RowLayout {
+            RoundButton {
+                text: "Open Menu"
+                onClicked: drawer.open()
+            }
+            Item {
+                Layout.fillWidth: true
+            }
+        }
+        Frame {
+            id: mainFrame
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+        }
     }
 
     Drawer {
@@ -33,6 +45,10 @@ ApplicationWindow {
                 }
                 RoundButton {
                     text: "+"
+                    onClicked: {
+                        stackView.push("NewItemPage.qml")
+                        drawer.close()
+                    }
                 }
                 Item {
                     Layout.fillWidth: true
