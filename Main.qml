@@ -8,10 +8,9 @@ ApplicationWindow {
     visible: true
     title: qsTr("Hello World")
 
-    StackView {
-        id: stackView
-        anchors.fill: parent
-        initialItem: MainView { }
+    RoundButton {
+        text: "Open Menu"
+        onClicked: drawer.open()
     }
 
     Drawer {
@@ -40,5 +39,10 @@ ApplicationWindow {
                 }
             }
         }
+    }
+
+    StackView {
+        id: stackView
+        anchors.fill: parent
     }
 }
