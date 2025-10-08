@@ -4,6 +4,9 @@ import QtQuick.Layouts
 
 Item {
     parent: mainFrame
+    Component.onCompleted: {
+        editButton.visible = false
+    }
     Label {
         text: "test"
     }

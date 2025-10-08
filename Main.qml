@@ -7,6 +7,9 @@ ApplicationWindow {
     height: 480
     visible: true
     title: qsTr("Hello World")
+    Component.onCompleted: {
+        editButton.visible = false
+    }
     ColumnLayout {
         anchors.fill: parent
         RowLayout {
@@ -21,8 +24,7 @@ ApplicationWindow {
                 id: editButton
                 text: "Edit"
                 onClicked: {
-                    this.visible = false
-                    stackView.push("EditItemPage.qml")
+                    stackView.push("EditSchedulePage.qml")
                     drawer.close()
                 }
                 visible: false
@@ -57,11 +59,10 @@ ApplicationWindow {
                     RoundButton {
                         text: "View"
                         onClicked: {
-                            editButton.visible = true
                             while(stackView.depth > 1) {
                                 stackView.pop()
                             }
-                            stackView.push("PreviewItemPage.qml")
+                            stackView.push("PreviewSchedulePage.qml")
                             drawer.close()
                         }
                     }
@@ -81,7 +82,7 @@ ApplicationWindow {
                 RoundButton {
                     text: "+"
                     onClicked: {
-                        stackView.push("EditItemPage.qml")
+                        stackView.push("EditSchedulePage.qml")
                         drawer.close()
                     }
                 }
