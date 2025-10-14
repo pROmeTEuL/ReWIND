@@ -23,6 +23,9 @@ public:
     QVariant data(const QModelIndex &index, int role) const;
     QHash<int, QByteArray> roleNames() const;
 
+private:
+    std::vector<ScheduleClassItem> m_data;
+
 };
 
 #endif // CLASSMODEL_H

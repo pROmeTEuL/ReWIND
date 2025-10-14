@@ -23,10 +23,14 @@ QVariant classmodel::data(const QModelIndex &index, int role) const
     if (!index.isValid())
         return {};
     switch(role) {
-    case Schedule:
+    case Name:
         return m_data[index.row()].name;
-    case Days:
-        return QVariant::fromValue(m_data[index.row()].days);
+    case Location:
+        return m_data[index.row()].location;
+    case StartTime:
+        return m_data[index.row()].startTime;
+    case EndTime:
+        return m_data[index.row()].endTime;
     }
 
     return {};
