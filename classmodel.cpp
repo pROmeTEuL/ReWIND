@@ -7,18 +7,19 @@ enum Roles {
     EndTime
 };
 
-classmodel::classmodel(QObject *parent)
-    : QAbstractListModel{parent}
-{}
+ClassModel::ClassModel()
+{
+    retreiveData();
+}
 
-int classmodel::rowCount(const QModelIndex &parent) const
+int ClassModel::rowCount(const QModelIndex &parent) const
 {
     if (parent.isValid())
         return -1;
     return m_data.size();
 }
 
-QVariant classmodel::data(const QModelIndex &index, int role) const
+QVariant ClassModel::data(const QModelIndex &index, int role) const
 {
     if (!index.isValid())
         return {};
@@ -36,7 +37,7 @@ QVariant classmodel::data(const QModelIndex &index, int role) const
     return {};
 }
 
-QHash<int, QByteArray> classmodel::roleNames() const
+QHash<int, QByteArray> ClassModel::roleNames() const
 {
     static const QHash<int, QByteArray> roles {
         { Name, "_name" },
@@ -45,4 +46,9 @@ QHash<int, QByteArray> classmodel::roleNames() const
         { EndTime, "_endTime" }
     };
     return roles;
+}
+
+void ClassModel::retreiveData()
+{
+
 }

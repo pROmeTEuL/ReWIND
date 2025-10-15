@@ -11,17 +11,23 @@ struct ScheduleClassItem {
     QString endTime;
 };
 
-class classmodel : public QAbstractListModel
+class ClassModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
-    explicit classmodel(QObject *parent = nullptr);
+    ClassModel();
+
+public slots:
+
 
     // QAbstractItemModel interface
 public:
     int rowCount(const QModelIndex &parent) const;
     QVariant data(const QModelIndex &index, int role) const;
     QHash<int, QByteArray> roleNames() const;
+
+private:
+    void retreiveData();
 
 private:
     std::vector<ScheduleClassItem> m_data;
