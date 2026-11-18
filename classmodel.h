@@ -2,6 +2,7 @@
 #define CLASSMODEL_H
 
 #include <QAbstractListModel>
+#include <QtQml/qqmlengine.h>
 #include <vector>
 
 struct ScheduleClassItem {
@@ -14,11 +15,12 @@ struct ScheduleClassItem {
 class ClassModel : public QAbstractListModel
 {
     Q_OBJECT
+    QML_ELEMENT
+
 public:
-    ClassModel();
+    explicit ClassModel(QObject *parent = nullptr);
 
 public slots:
-
 
     // QAbstractItemModel interface
 public:

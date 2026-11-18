@@ -1,3 +1,5 @@
+import UniversityScheduler
+
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
@@ -7,9 +9,6 @@ ApplicationWindow {
     height: 480
     visible: true
     title: "University Scheduler"
-    Component.onCompleted: {
-        editButton.visible = false
-    }
     ColumnLayout {
         anchors.fill: parent
         RowLayout {
@@ -51,7 +50,7 @@ ApplicationWindow {
                 delegate: RowLayout {
                     width: parent.width
                     Label {
-                        text: name
+                        text: model._name
                     }
                     Item {
                         Layout.fillWidth: true
@@ -68,9 +67,7 @@ ApplicationWindow {
                     }
                 }
 
-                model: ListModel {
-                    ListElement { name: "Item 1" }
-                }
+                model: ClassModel {}
             }
             Item {
                 Layout.fillHeight: true

@@ -7,9 +7,12 @@ enum Roles {
     EndTime
 };
 
-ClassModel::ClassModel()
+
+
+ClassModel::ClassModel(QObject *parent)
+    : QAbstractListModel(parent)
 {
-    retreiveData();
+
 }
 
 int ClassModel::rowCount(const QModelIndex &parent) const
