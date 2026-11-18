@@ -13,14 +13,12 @@ DatabaseManager::DatabaseManager()
     m_db.setDatabaseName("schedules.sdb");
     if (!m_db.open()) {
         qCritical() << "Can't open DB";
-        return -1;
     }
     QSqlQuery query;
     QString createTableQuery =
         "";
     if (!query.exec(createTableQuery)) {
         qCritical() << "Failed to create table:" << query.lastError().text();
-        return -1;
     }
 }
 
