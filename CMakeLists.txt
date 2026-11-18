@@ -9,9 +9,7 @@ find_package(Qt6 REQUIRED COMPONENTS Quick Sql)
 
 qt_standard_project_setup(REQUIRES 6.12)
 
-qt_add_executable(appUniversityScheduler
-    main.cpp
-)
+qt_add_executable(appUniversityScheduler)
 
 qt_add_resources(appUniversityScheduler "resources"
     PREFIX "/"
@@ -22,15 +20,10 @@ qt_add_resources(appUniversityScheduler "resources"
 qt_add_qml_module(appUniversityScheduler
     URI UniversityScheduler
     VERSION 1.0
-    QML_FILES
-        Main.qml
-        EditSchedulePage.qml
-        PreviewSchedulePage.qml
-    SOURCES
-        schedulemodel.h schedulemodel.cpp
-        SOURCES classmodel.h classmodel.cpp
-        SOURCES databasemanager.h databasemanager.cpp
 )
+
+add_subdirectory(src)
+add_subdirectory(qml)
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
