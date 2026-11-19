@@ -3,6 +3,7 @@ target_sources(appUniversityScheduler PRIVATE
     schedulemodel.h schedulemodel.cpp
     classmodel.h classmodel.cpp
     databasemanager.h databasemanager.cpp
+    daymodel.h daymodel.cpp
 )
 
 # Generated QML type registration code includes the model headers by name.
