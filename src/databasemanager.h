@@ -9,10 +9,15 @@ class DatabaseManager
 {
 public:
     static DatabaseManager &instance();
+    bool good();
+    bool bad();
+
 private:
     DatabaseManager();
+
 private:
     QSqlDatabase m_db;
+    bool m_good;
 };
 
 #endif // DATABASEMANAGER_H

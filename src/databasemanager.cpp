@@ -6,6 +6,16 @@ DatabaseManager &DatabaseManager::instance()
     return dbm;
 }
 
+bool DatabaseManager::good()
+{
+    return m_good;
+}
+
+bool DatabaseManager::bad()
+{
+    return !m_good;
+}
+
 DatabaseManager::DatabaseManager()
 {
     m_db = QSqlDatabase::addDatabase("QSQLITE");
@@ -13,6 +23,8 @@ DatabaseManager::DatabaseManager()
     m_db.setDatabaseName("schedules.sdb");
     if (!m_db.open()) {
         qCritical() << "Can't open DB";
+        m_good = false;
+        return;
     }
     QSqlQuery query;
     QString createTableQuery =
@@ -39,6 +51,9 @@ CREATE INDEX IF NOT EXISTS idx_classes_schedule_day
 )rawliteral";
     if (!query.exec(createTableQuery)) {
         qCritical() << "Failed to create table:" << query.lastError().text();
+        m_good = false;
+        return;
     }
+    m_good = true;
 }
 
