@@ -55,19 +55,18 @@ ApplicationWindow {
                     Item {
                         Layout.fillWidth: true
                     }
-                    RoundButton {
-                        text: "View"
-                        onClicked: {
+                    TapHandler {
+                        onTapped: {
                             while(stackView.depth > 1) {
                                 stackView.pop()
                             }
-                            stackView.push("PreviewSchedulePage.qml")
+                            stackView.push("PreviewSchedulePage.qml", {"index": index, "name": _name})
                             drawer.close()
                         }
                     }
                 }
 
-                model: ScheduleModel {}
+                model: scheduleModel
             }
             Item {
                 Layout.fillHeight: true
@@ -93,5 +92,9 @@ ApplicationWindow {
     StackView {
         id: stackView
         anchors.fill: parent
+    }
+
+    ScheduleModel {
+        id: scheduleModel
     }
 }
