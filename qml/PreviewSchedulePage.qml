@@ -7,13 +7,6 @@ Item {
     property string name
     parent: mainFrame
     Component.onCompleted: {
-        editButton.visible = true
-    }
-    Label {
-        text: name
-    }
-
-    ListView {
-
+        frameTitle.text = name;
     }
 }

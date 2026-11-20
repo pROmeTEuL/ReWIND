@@ -13,8 +13,28 @@ ApplicationWindow {
         anchors.fill: parent
         RowLayout {
             RoundButton {
+                id: drawerButton
                 text: "Open Menu"
                 onClicked: drawer.open()
+            }
+            RoundButton {
+                id: backButton
+                text: "↩"
+                visible: false
+                onClicked: {
+                    if (stackView.depth > 1)
+                        stackView.pop();
+                }
+            }
+            Item {
+                Layout.fillWidth: true
+            }
+            // TODO: mend horizontal alignment
+            Label {
+                id: frameTitle
+                text: "ReWIND"
+                font.pixelSize: 30
+                Layout.alignment: Qt.AlignHCenter
             }
             Item {
                 Layout.fillWidth: true
@@ -92,6 +112,29 @@ ApplicationWindow {
     StackView {
         id: stackView
         anchors.fill: parent
+        onDepthChanged: {
+            switch (stackView.depth) {
+            case 1:
+                backButton.visible = false;
+                drawerButton.visible = true;
+                drawer.enabled = true;
+                drawer.interactive = true;
+                editButton.visible = true;
+                break;
+            case 2:
+                backButton.visible = true;
+                drawerButton.visible = false;
+                drawer.enabled = false;
+                drawer.interactive = false;
+                editButton.visible = false;
+                break;
+            default:
+                console.warn("StackView depth is" + stackView.depth);
+                console.warn("Returning to Main Page");
+                while (stackView.depth > 1)
+                    stackView.pop();
+            }
+        }
     }
 
     ScheduleModel {
