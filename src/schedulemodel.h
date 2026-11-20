@@ -2,13 +2,15 @@
 #define SCHEDULEMODEL_H
 
 #include <QAbstractListModel>
+#include <QQmlEngine>
 #include <vector>
 
 class ScheduleModel : public QAbstractListModel
 {
     Q_OBJECT
+    QML_ELEMENT
 public:
-    ScheduleModel();
+    explicit ScheduleModel(QObject *parent = nullptr);
 
 public slots:
     void addSchedule(const QString &item);
@@ -38,6 +40,8 @@ private:
     struct ScheduleItem {
         QString name;
         std::vector<ScheduleDayItem> days;
+        ScheduleItem(QString text) : name(text)
+        { }
     };
     std::vector<ScheduleItem> m_data;
 };

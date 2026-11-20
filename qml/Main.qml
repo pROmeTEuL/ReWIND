@@ -67,7 +67,7 @@ ApplicationWindow {
                     }
                 }
 
-                model: ClassModel {}
+                model: ScheduleModel {}
             }
             Item {
                 Layout.fillHeight: true

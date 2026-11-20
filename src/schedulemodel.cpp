@@ -1,13 +1,14 @@
 #include "schedulemodel.h"
 
 enum Roles {
-    Schedule = Qt::UserRole,
+    Name = Qt::UserRole,
     Days
 };
 
-ScheduleModel::ScheduleModel()
+ScheduleModel::ScheduleModel(QObject *parent)
+    : QAbstractListModel(parent)
 {
-
+    retreiveData();
 }
 
 void ScheduleModel::addSchedule(const QString &item)
@@ -32,7 +33,7 @@ QVariant ScheduleModel::data(const QModelIndex &index, int role) const
     if (!index.isValid())
         return {};
     switch(role) {
-    case Schedule:
+    case Name:
         return m_data[index.row()].name;
     case Days:
         return QVariant::fromValue(m_data[index.row()].days);
@@ -44,7 +45,7 @@ QVariant ScheduleModel::data(const QModelIndex &index, int role) const
 QHash<int, QByteArray> ScheduleModel::roleNames() const
 {
     static const QHash<int, QByteArray> roles {
-        { Schedule, "_schedule" },
+        { Name, "_name" },
         { Days, "_days" }
     };
     return roles;
@@ -52,5 +53,11 @@ QHash<int, QByteArray> ScheduleModel::roleNames() const
 
 void ScheduleModel::retreiveData()
 {
-    /// TODO: Implement data retrieval from database
+    // Using dummy values for testing purposes
+    m_data.push_back(ScheduleItem {
+        "Schedule 1"
+    });
+    m_data.push_back(ScheduleItem {
+        "Schedule 2"
+    });
 }
