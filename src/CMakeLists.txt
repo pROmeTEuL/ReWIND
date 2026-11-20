@@ -1,4 +1,4 @@
-target_sources(appUniversityScheduler PRIVATE
+target_sources(appReWIND PRIVATE
     main.cpp
     schedulemodel.h schedulemodel.cpp
     classmodel.h classmodel.cpp
@@ -7,6 +7,6 @@ target_sources(appUniversityScheduler PRIVATE
 )
 
 # Generated QML type registration code includes the model headers by name.
-target_include_directories(appUniversityScheduler PRIVATE
+target_include_directories(appReWIND PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}"
 )

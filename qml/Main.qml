@@ -8,7 +8,7 @@ ApplicationWindow {
     width: 640
     height: 480
     visible: true
-    title: "University Scheduler"
+    title: "ReWIND"
     ColumnLayout {
         anchors.fill: parent
         RowLayout {
