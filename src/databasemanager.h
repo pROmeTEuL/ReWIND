@@ -11,6 +11,7 @@ public:
     static DatabaseManager &instance();
     bool good();
     bool bad();
+/// TODO: add methods to execute queries and manage the database connection
 
 private:
     DatabaseManager();

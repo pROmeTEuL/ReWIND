@@ -1,4 +1,4 @@
-import UniversityScheduler
+import ReWIND
 
 import QtQuick
 import QtQuick.Controls
