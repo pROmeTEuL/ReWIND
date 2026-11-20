@@ -20,4 +20,5 @@ If CMake cannot find Qt, set `CMAKE_PREFIX_PATH` to your Qt installation directo
 
 ## License
 
+GPLv3 license.\
 See [LICENSE](LICENSE) for more details.
