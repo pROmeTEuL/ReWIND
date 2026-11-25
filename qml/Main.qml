@@ -77,7 +77,7 @@ ApplicationWindow {
                     }
                     TapHandler {
                         onTapped: {
-                            while(stackView.depth > 1) {
+                            while (stackView.depth > 1) {
                                 stackView.pop()
                             }
                             stackView.push("PreviewSchedulePage.qml", {"index": index, "name": _name})
@@ -111,17 +111,25 @@ ApplicationWindow {
 
     StackView {
         id: stackView
-        anchors.fill: parent
+        // anchors.fill: parent
+        Layout.fillHeight: true
+        Layout.fillWidth: true
+        initialItem: this
         onDepthChanged: {
             switch (stackView.depth) {
             case 1:
+                console.log("Case 1");
+                break;
+            case 2:
+                console.log("Case 2");
                 backButton.visible = false;
                 drawerButton.visible = true;
                 drawer.enabled = true;
                 drawer.interactive = true;
                 editButton.visible = true;
                 break;
-            case 2:
+            case 3:
+                console.log("Case 3");
                 backButton.visible = true;
                 drawerButton.visible = false;
                 drawer.enabled = false;
@@ -134,6 +142,10 @@ ApplicationWindow {
                 while (stackView.depth > 1)
                     stackView.pop();
             }
+        }
+        Component.onCompleted: {
+            console.log("Curent item:\n" + currentItem)
+            console.log("Depth: " + depth)
         }
     }
 
